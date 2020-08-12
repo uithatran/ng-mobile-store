@@ -1,0 +1,54 @@
+$color-border: rgb(221, 221, 221);
+$form-padding-x: 20px;
+$form-padding-y: 8px;
+$header-padding-l: 80px;
+$header-padding-r: 50px;
+$header-font-size-title: 3.8em;
+
+
+.login-container {
+  .header{
+    background-color: #EEEEEE;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    padding-left: $header-padding-l;
+    p {
+      font-size: $header-font-size-title;
+      font-weight: 400;
+    }
+  }
+  .form-container {
+    padding: 5px 150px;
+  }
+  .formLogin {
+    width: 100vw;
+    margin-top: 30px;
+    height: 20%;
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    border: 1px solid $color-border;
+    .form-title {
+      padding: 0px;
+      width: 100%;
+      border-bottom: 1px solid $color-border;
+      background-color: rgb(245, 245, 245);
+      border-radius: 5px 5px 0 0;
+      display: flex;
+      border-bottom: 1px solid back;
+      p {
+        margin:0;
+        padding: $form-padding-y $form-padding-x;
+      }
+    }
+    form {
+      padding: $form-padding-x $form-padding-x;
+      button {
+        background-color: rgb(92, 182,92);
+        color: white;
+        font-size: 1.1em;
+      }
+    }
+  }
+}

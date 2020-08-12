@@ -1,0 +1,61 @@
+<div class="cart-container d-flex flex-column ">
+  <div class="header d-flex">
+    <div class="header-left col-md-6 p-0">
+      <h1>Cart</h1>
+      <p>All the selected products in your cart</p>
+    </div>
+    <div class="header-right col-md-6 text-right">
+      <!-- <button class="btn btn-danger ">logout</button> -->
+    </div>
+  </div>
+  <div class="content">
+    <div class="content-header d-flex justify-content-between">
+      <button class="btn btn-clear" (click)="onRemoveAll()">
+        <i class="fa fa-times-circle-o" aria-hidden="true"></i> Clear Cart
+      </button>
+      <button class="btn btn-checkout">
+        <i class="fa fa-shopping-cart" aria-hidden="true"></i> Check out
+      </button>
+    </div>
+    <div class="content-table">
+      <table class="table">
+        <thead>
+          <tr>
+            <th style="width: 40%">Product</th>
+            <th style="width: 15%">Quanlity</th>
+            <th style="width: 15%">Unit price</th>
+            <th style="width: 15%">Price</th>
+            <th style="width: 15%">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of cartItems.items">
+            <td>{{ item.productName }}</td> 
+            <td>{{ item.quanlityItem }}</td>
+            <td>{{ item.unitPrice | currency}}</td>
+            <td>{{ item.unitPrice * item.quanlityItem | currency}}</td>
+            <td>
+              <button class="btn btn-remove" (click)="onRemoveItem(item._id)">
+                <i class="fa fa-times-circle-o" aria-hidden="true"></i> Remove
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td>
+              <h6>Grand Total</h6>
+            </td>
+            <td>{{grandTotal | currency}}</td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="content-btn__continue">
+      <button class="btn btn-continues" [routerLink]="['/products']" routerLinkActive="router-link-active" >
+        <i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i> continue shopping
+      </button>
+    </div>
+  </div>
+</div>

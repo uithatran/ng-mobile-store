@@ -1,0 +1,55 @@
+<div class="products-container d-flex flex-column ">
+  <div class="header d-flex">
+    <div class="header-left col-md-6 p-0">
+      <h1>Products</h1>
+    </div>
+    <div class="header-right col-md-6 text-right"></div>
+  </div>
+
+  <!-- Content -->
+  <div class="content row" *ngIf="product">
+    <div class="content-left col-sm-12 col-md-5 col-lg-5">
+      <!-- <img src="{{url + product.imageFile}}" alt="lorem-picture"> -->
+      <img src="{{ url + product.imageFile}}" alt="{{product.imageFile}}">
+    </div>
+    <div class="content-right col-sm-12 col-md-7 col-lg-7">
+      <h5 class="content-title">{{product.productName}}</h5>
+      <p>{{ product.description }}</p>
+      <div class="content-right__item d-flex">
+        <label for="itemCode">Item Code : </label>
+        <p class="ml-2 itemCode">{{product._id}}</p>
+      </div>
+      <div class="content-right__item d-flex">
+        <label for="manufacturer">manufacturer : </label>
+        <p class="manufacturer ml-2">{{ product.manufacturer }}</p>
+      </div>
+      <div class="content-right__item d-flex ">
+        <label for="category">category : </label>
+        <p class="ml-2 category">{{ product.category }}</p>
+      </div>
+      <div class="content-right__item d-flex">
+        <label for="stock">Availble units in stock : </label>
+        <p class="stock ml-2">{{ product.unitsInStock }}</p>
+      </div>
+      <div class="content-right__item">
+        <p class="cost">{{ product.unitPrice }}USD</p>
+      </div>
+      <div class="content-right__item">
+        <button class="btn btn-back" routerLink="/products">
+          <i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i> back
+        </button>
+        <button class="btn btn-order" (click)='onOrder(product)'>
+          <i class="fa fa-shopping-cart"></i> Order Now
+        </button>
+        <button class="btn btn-danger delete-product" (click)='onDelete(product._id)'>
+          <i class="fa fa-trash"></i> Delete
+        </button>
+      </div>
+    </div>
+  </div>
+  <div id="notify-buyed" class="d-flex flex-column">
+    <img src="../../../../assets/images/Tick_icon.svg.png" alt="buy-icon.img" class="mb-4">
+    <p>Sản phẩm đã được thêm vào giỏ hàng</p>
+  </div>
+
+</div>

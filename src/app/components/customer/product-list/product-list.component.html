@@ -1,0 +1,43 @@
+<div class="products-container d-flex flex-column ">
+  <div class="header d-flex">
+    <div class="header-left col-md-6 p-0">
+      <h1>Products</h1>
+      <p>Add the available products in our store</p>
+    </div>
+    <div class="header-right col-md-6 text-right">
+      <button class="btn btn-light" [routerLink]="['cart']" routerLinkActive="router-link-active">
+        <i class="fa fa-shopping-cart"></i> view cart
+        <span *ngIf="quanlityCart != 0" class="text-warning font-weight-bold">{{ quanlityCart }}</span>
+      </button>
+    </div>
+  </div>
+  <!-- Content -->
+  <div class="content row d-flex">
+    <!-- Content-item -->
+    <!-- <p>{{ products | json}}</p> -->
+    <div class="content-item col-sm-12 col-md-6 col-lg-4 col-xl-3" *ngFor="let product of productService.listproducts">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">{{product.productName}}</h5>
+          <img src="{{ url + product.imageFile}}" alt="{{product.imageFile}}">
+          <p>{{ product.description }}</p>
+          <p>{{ product.unitInStock }} units in stock</p>
+          <div class="content-footer">
+            <button class="btn btn-primary btn-details mb-2" [routerLink]="['/products', product._id]"
+              routerLinkActive="router-link-active">
+              <i class="fa fa-info-circle"></i> Details
+            </button>
+            <button class="btn btn-primary btn-order mb-2" (click)='onOrder(product)'>
+              <i class="fa fa-shopping-cart"></i> Order Now
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div id="notify-buyed" class="d-flex flex-column">
+    <img src="../../../../assets/images/Tick_icon.svg.png" alt="buy-icon.img" class="mb-4">
+    <p>Sản phẩm đã được thêm vào giỏ hàng</p>
+  </div>
+</div>

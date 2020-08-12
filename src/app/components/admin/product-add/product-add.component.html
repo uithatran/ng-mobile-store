@@ -1,0 +1,131 @@
+<div class="product-container d-flex flex-column ">
+  <div class="header d-flex">
+    <div class="header-left col-md-6 p-0">
+      <h1>Products</h1>
+      <p>Add Products</p>
+    </div>
+    <div class="header-right col-md-6 text-right">
+      <button class="btn btn-danger" (click)="onLogout()">logout</button>
+    </div>
+  </div>
+  <div class="content">
+    <div class="content-title">
+      <p>Add new product</p>
+      <div *ngIf="successNotify != ''" class="alert alert-success success-notify">{{ successNotify }}</div>
+    </div>
+    <hr>
+    <div class="content-form d-flex row">
+      <form [formGroup]="productForm" (ngSubmit)="onSubmit()" class="col-sm-6 col-md-6 col-lg-6">
+        <div class="form-item row">
+          <label for="productName" class="col-sm-4 col-md-4 col-lg-4">Product Name</label>
+          <div class="input col-sm-8 col-md-8 col-lg-8">
+            <input type="text" class="form-control" id="productName" formControlName="productName"
+              [ngClass]="{'is-invalid': f.productName.errors && f.productName.touched}">
+          </div>
+          <div *ngIf="f.productName.errors && f.productName.touched"
+            class="col-sm-8 col-md-8 col-lg-8col-sm-8 col-md-8 col-lg-8 offset-sm-4 offset-md-4 offset-lg-4 col-sm-8 col-md-8 col-lg-8 my-2">
+            <div *ngIf="f.productName.errors.required" class="alert alert-danger p-1 m-0">Product name is required</div>
+            <div *ngIf="f.productName.errors.minlength" class="alert alert-danger p-1 m-0">Product name must be least 6
+              characters</div>
+          </div>
+        </div>
+        <div class="form-item row">
+          <label for="unitPrice" class="col-sm-4 col-md-4 col-lg-4">Unit Price</label>
+          <div class="input col-sm-8 col-md-8 col-lg-8">
+            <input type="number" class="form-control" id="unitPrice" formControlName="unitPrice"
+              [ngClass]="{'is-invalid': f.unitPrice.errors && f.unitPrice.touched}">
+          </div>
+          <div *ngIf="f.unitPrice.errors && f.unitPrice.touched"
+            class="col-sm-8 col-md-8 col-lg-8col-sm-8 col-md-8 col-lg-8 offset-sm-4 offset-md-4 offset-lg-4 col-sm-8 col-md-8 col-lg-8 my-2">
+            <div *ngIf="f.unitPrice.errors.required" class="alert alert-danger p-1 m-0">Unit Price is required</div>
+            <div *ngIf="f.unitPrice.errors.min" class="alert alert-danger p-1 m-0">Unit Price must greater than or equal
+              0</div>
+          </div>
+        </div>
+        <div class="form-item row">
+          <label for="unitsInStock" class="col-sm-4 col-md-4 col-lg-4">Units In Stock</label>
+          <div class="input col-sm-8 col-md-8 col-lg-8">
+            <input type="number" class="form-control" id="unitsInStock" value='0' formControlName="unitInStock"
+              [ngClass]="{'is-invalid': f.unitInStock.errors && f.unitInStock.touched}">
+          </div>
+          <div *ngIf="f.unitInStock.errors && f.unitInStock.touched"
+            class="col-sm-8 col-md-8 col-lg-8col-sm-8 col-md-8 col-lg-8 offset-sm-4 offset-md-4 offset-lg-4 col-sm-8 col-md-8 col-lg-8 my-2">
+            <div *ngIf="f.unitInStock.errors.required" class="alert alert-danger p-1 m-0">Unit In Stock is required
+            </div>
+          </div>
+        </div>
+        <div class="form-item row">
+          <label for="description" class="col-sm-4 col-md-4 col-lg-4">Description</label>
+          <div class="input col-sm-8 col-md-8 col-lg-8">
+            <textarea type="" class="form-control" id="description" rows="2" cols="30" formControlName="description"
+              [ngClass]="{'is-invalid': f.description.errors && f.description.touched}">
+            </textarea>
+          </div>
+          <div *ngIf="f.description.errors && f.description.touched"
+            class="col-sm-8 col-md-8 col-lg-8col-sm-8 col-md-8 col-lg-8 offset-sm-4 offset-md-4 offset-lg-4 col-sm-8 col-md-8 col-lg-8 my-2">
+            <div *ngIf="f.description.errors.required" class="alert alert-danger p-1 m-0">Description is required
+            </div>
+          </div>
+        </div>
+        <div class="form-item row">
+          <label for="manufacturer" class="col-sm-4 col-md-4 col-lg-4">Manufacturer</label>
+          <div class="input col-sm-8 col-md-8 col-lg-8">
+            <input type="email" class="form-control" id="manufacturer" formControlName="manufacturer"
+              [ngClass]="{'is-invalid': f.manufacturer.errors && f.manufacturer.touched}">
+          </div>
+          <div *ngIf="f.manufacturer.errors && f.manufacturer.touched"
+            class="col-sm-8 col-md-8 col-lg-8col-sm-8 col-md-8 col-lg-8 offset-sm-4 offset-md-4 offset-lg-4 col-sm-8 col-md-8 col-lg-8 my-2">
+            <div *ngIf="f.manufacturer.errors.required" class="alert alert-danger p-1 m-0">Manufacturer is required
+            </div>
+          </div>
+        </div>
+        <div class="form-item row">
+          <label for="caterogy" class="col-sm-4 col-md-4 col-lg-4">Category</label>
+          <div class="input col-sm-8 col-md-8 col-lg-8">
+            <input type="email" class="form-control" id="caterogy" formControlName="category"
+              [ngClass]="{'is-invalid': f.category.errors && f.category.touched}">
+          </div>
+          <div *ngIf="f.category.errors && f.category.touched"
+            class="col-sm-8 col-md-8 col-lg-8col-sm-8 col-md-8 col-lg-8 offset-sm-4 offset-md-4 offset-lg-4 col-sm-8 col-md-8 col-lg-8 my-2">
+            <div *ngIf="f.category.errors.required" class="alert alert-danger p-1 m-0">Category is required
+            </div>
+          </div>
+        </div>
+        <div class="form-item form-radio row">
+          <label for="caterogy" class="col-sm-4 col-md-4 col-lg-4">Condition</label>
+          <div class="input-radio col-sm-8 col-md-8 col-lg-8 d-flex flex-row">
+            <input type="radio" id="new" name="condition" value="new" formControlName="condition">
+            <label for="new">New</label>
+            <input type="radio" id="old" name="condition" value="old" formControlName="condition">
+            <label for="old">Old</label>
+            <input type="radio" id="refurbished" name="condition" value="refurbished" formControlName="condition">
+            <label for="refurbished">Refurbished</label>
+          </div>
+          <div *ngIf="f.condition.errors && submitted"
+            class="col-sm-8 col-md-8 col-lg-8col-sm-8 col-md-8 col-lg-8 offset-sm-4 offset-md-4 offset-lg-4 col-sm-8 col-md-8 col-lg-8 my-2">
+            <div *ngIf="f.condition.errors.required" class="alert alert-danger p-1 m-0">Condition is required
+            </div>
+          </div>
+        </div>
+        <div class="form-item row">
+          <label for="imageFile" class="col-sm-4 col-md-4 col-lg-4">Product Image File</label>
+          <div class="input-file col-sm-8 col-md-8 col-lg-8">
+            <!-- <input type="email" class="form-control" id="caterogy"> -->
+            <input type="file" id="imageFile" name="img" (change)="onFileSelect($event)" formControlName="imageF">
+          </div>
+          <!-- <div *ngIf="f.imageFile.errors && submitted"
+            class="col-sm-8 col-md-8 col-lg-8col-sm-8 col-md-8 col-lg-8 offset-sm-4 offset-md-4 offset-lg-4 col-sm-8 col-md-8 col-lg-8 my-2">
+            <div *ngIf="f.imageFile.errors.required" class="alert alert-danger p-1 m-0">Image file is required
+            </div>
+          </div> -->
+        </div>
+        <div class="form-item row">
+          <label for="button" class="col-sm-4 col-md-4 col-lg-4"></label>
+          <div class="input col-sm-8 col-md-8 col-lg-8">
+            <button class="btn btn-primary">Add Product</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
